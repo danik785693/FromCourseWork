@@ -3,6 +3,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import logger from "./logger";
+import DataBase from "./database/database";
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ logger.silly("silly");
 
 const start = async () => {
   try {
+    await DataBase.sync();
+    await DataBase.authenticate();
     app.listen(PORT, () => console.log("Server work " + PORT));
   } catch (e) {
     console.log(e);
