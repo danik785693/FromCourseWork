@@ -3,7 +3,7 @@
 import { Request, Response } from "express";
 import { Flight } from "../models/models";
 
-class ConstructionMachineryCreate {
+class FlightCreate {
   async create(req: Request, res: Response) {
     try {
       const { name, description, data, availabilitybilet } = req.body;
@@ -51,4 +51,4 @@ class ConstructionMachineryCreate {
   }
 }
 
-export default new ConstructionMachineryCreate();
+export default new FlightCreate();
