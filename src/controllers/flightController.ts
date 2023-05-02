@@ -40,25 +40,11 @@ class FlightCreate {
     }
   }
 
-  async availabilitybilet(req: Request, res: Response) {
-    try {
-      const flightId: number = +req.query.flightId;
-      const find = await Bilet.findAll({ where: { flightId: flightId } });
-      let allquantity: number = 0;
-      for (var i = 0; i < find.length; i++) {
-        allquantity += find[i].dataValues.quantity;
-      }
-
-      res.status(200).json();
-    } catch (e) {
-      res.status(400).json(e);
-    }
-  }
-
   async delete(req: Request, res: Response) {
     try {
       const id = req.query.id;
       await Flight.destroy({ where: { id: id } });
+      await Bilet.destroy({ where: { flightId: id } });
       res.status(200).json({ messege: "Рейс удалён" });
     } catch (e) {
       res.status(400).json(e);
