@@ -94,3 +94,8 @@
 {"level":"info","message":"info"}
 {"level":"verbose","message":"verbose"}
 {"level":"debug","message":"debag"}
+{"level":"error","message":"error"}
+{"level":"warn","message":"warn"}
+{"level":"info","message":"info"}
+{"level":"verbose","message":"verbose"}
+{"level":"debug","message":"debag"}
