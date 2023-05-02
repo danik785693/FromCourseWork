@@ -7,8 +7,8 @@ class TypeBiletCreate {
   async create(req: Request, res: Response) {
     try {
       const { name } = req.body;
-      const createTypeBilet = TypeBilet.create({ name });
-      return res.status(200).json(createTypeBilet);
+      const createTypeBilet = await TypeBilet.create({ name });
+      res.status(200).json(createTypeBilet);
     } catch (e) {
       res.status(400).json(e);
     }
