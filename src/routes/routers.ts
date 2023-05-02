@@ -4,14 +4,18 @@ import { Router } from "express";
 import FlightCreate from "../controllers/flightController";
 import TypeBiletCreate from "../controllers/typebiletController";
 import BiletCreate from "../controllers/biletController";
+import UserController from "../controllers/userController";
 
 const router = Router();
+
+router.post("/registration", UserController.registration);
+router.post("/login", UserController.login);
+router.get("/check", UserController.check);
 
 router.post("/flightcreate", FlightCreate.create);
 router.get("/flightgetAll", FlightCreate.getAll);
 router.get("/flightgetOne", FlightCreate.getOne);
 router.delete("/flightdelete", FlightCreate.delete);
-router.post("/availabilitybilet", FlightCreate.availabilitybilet);
 
 router.post("/typebiletcreate", TypeBiletCreate.create);
 router.get("/typebiletgetAll", TypeBiletCreate.getAll);

@@ -113,50 +113,27 @@ var FlightCreate = /** @class */ (function () {
             });
         });
     };
-    FlightCreate.prototype.availabilitybilet = function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            var flightId, find, allquantity, i, e_4;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        flightId = +req.query.flightId;
-                        return [4 /*yield*/, models_1.Bilet.findAll({ where: { flightId: flightId } })];
-                    case 1:
-                        find = _a.sent();
-                        allquantity = 0;
-                        for (i = 0; i < find.length; i++) {
-                            allquantity += find[i].dataValues.quantity;
-                        }
-                        res.status(200).json();
-                        return [3 /*break*/, 3];
-                    case 2:
-                        e_4 = _a.sent();
-                        res.status(400).json(e_4);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
     FlightCreate.prototype.delete = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, e_5;
+            var id, e_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 3, , 4]);
                         id = req.query.id;
                         return [4 /*yield*/, models_1.Flight.destroy({ where: { id: id } })];
                     case 1:
                         _a.sent();
-                        res.status(200).json({ messege: "Рейс удалён" });
-                        return [3 /*break*/, 3];
+                        return [4 /*yield*/, models_1.Bilet.destroy({ where: { flightId: id } })];
                     case 2:
-                        e_5 = _a.sent();
-                        res.status(400).json(e_5);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        _a.sent();
+                        res.status(200).json({ messege: "Рейс удалён" });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_4 = _a.sent();
+                        res.status(400).json(e_4);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
