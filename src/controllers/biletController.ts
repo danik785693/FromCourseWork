@@ -82,7 +82,9 @@ class BiletCreate {
           .status(200)
           .json({ message: "Билетов на рейс нету в наличии" });
       }
-    } catch (e) {}
+    } catch (e) {
+      res.status(400).json(e);
+    }
   }
 
   async delete(req: Request, res: Response) {
